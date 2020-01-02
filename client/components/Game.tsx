@@ -14,7 +14,7 @@ const Game: React.FunctionComponent<GameProps> = ({ gameData, openModal }) => (
       <img src={`/images/${gameData.ID}.png`} alt={`${gameData.Name} icon`} />
       <ul className="gameInfoList">
         {
-          gameData.SupportsAddOns ? 
+          gameData.SupportsAddons ? 
             <li><strong>Supports Add Ons: Yes</strong></li>
             : <li className="noSupport">Supports Add Ons: No</li>
         }

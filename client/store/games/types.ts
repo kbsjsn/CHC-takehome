@@ -9,7 +9,7 @@ interface CategorySection {
 export interface GameData {
   ID: number;
   Name: string;
-  SupportsAddOns: boolean;
+  SupportsAddons: boolean;
   SupportsVoice: boolean;
   Slug: string;
   GameFiles: Array<GameFile>;

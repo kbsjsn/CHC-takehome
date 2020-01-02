@@ -1,7 +1,7 @@
 export interface ModalGameData {
   ID: number;
   Name: string;
-  SupportsAddOns: boolean;
+  SupportsAddons: boolean;
   SupportsVoice: boolean;
   Slug: string;
   GameFileNames: Array<string>;

@@ -25,7 +25,7 @@ interface GameModalProps {
 const GameModal: FunctionComponent<GameModalProps> = ({ 
     isOpen, 
     onRequestClose, 
-    modalGameData: { ID, Name, SupportsAddOns, SupportsVoice, Slug, GameFileNames, CatSectionNames }, 
+    modalGameData: { ID, Name, SupportsAddons, SupportsVoice, Slug, GameFileNames, CatSectionNames }, 
   }) => (
   <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles} >
     <div className="modalContainer">
@@ -33,7 +33,7 @@ const GameModal: FunctionComponent<GameModalProps> = ({
       <div className="nameInfoContainer">
         <img src={`/images/${ID}.png`} alt={`${Name} icon`} />
         <ul>
-          <li>Supports Add Ons: {SupportsAddOns ? <strong>Yes</strong> : <em>No</em>}</li>
+          <li>Supports Add Ons: {SupportsAddons ? <strong>Yes</strong> : <em>No</em>}</li>
           <li>Supports Voice: {SupportsVoice ? <strong>Yes</strong> : <em>No</em>}</li>
           <li>Slug: {Slug ? <ul><li><strong>{Slug}</strong></li></ul> : <em>None</em>} 
           </li>

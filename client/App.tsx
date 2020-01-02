@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { AppState } from './store';
 
@@ -17,9 +17,9 @@ import Search from './components/Search';
 // helper function - input array of game data, output game components
 const displayGames = (gamesData: Array<GameData> | null | undefined, openModalParam: typeof openModal) => (
   gamesData ? gamesData.map(
-    ({ Name, ID, SupportsAddOns, SupportsVoice, Slug, GameFiles, CategorySections } , index) => {
+    ({ Name, ID, SupportsAddons, SupportsVoice, Slug, GameFiles, CategorySections } , index) => {
       const gameData: ModalGameData = { 
-        Name, ID, SupportsAddOns, SupportsVoice, Slug, 
+        Name, ID, SupportsAddons, SupportsVoice, Slug, 
         GameFileNames: GameFiles.map(({ FileName }) => FileName), 
         CatSectionNames: CategorySections.map(({ Name }) => Name) 
       }
@@ -41,57 +41,55 @@ interface AppProps {
   filterByQuery: any;
 }
 
-class App extends React.Component<AppProps> {
-  componentDidMount() {
-    this.props.loadGames();
-  }
-  
-  render() {
-    const { filterByQuery, openModal, closeModal } = this.props;
-    const { data, filteredGames } = this.props.games;
-    const { modalIsOpen, modalGameData } = this.props.modal;
+const App: React.FunctionComponent<AppProps> = (props) => { 
+  //   setInterval(this.props.loadGames, 3000);
 
-    return (
-      <div className="container">
-        <header>
-          <h1>Twitch Games Data</h1>
-        </header>
-        {
-          data === null ? (
+  useEffect(() => {props.loadGames()}, []);
+  
+  const { filterByQuery, openModal, closeModal } = props;
+  const { data, filteredGames } = props.games;
+  const { modalIsOpen, modalGameData } = props.modal;
+
+  return (
+    <div className="container">
+      <header>
+        <h1>Twitch Games Data</h1>
+      </header>
+      {
+        data === null ? (
+          <div className="loadingContainer">
+            <div>Loading...</div>
+          </div>
+        ) : (
+          data === undefined ? (
             <div className="loadingContainer">
-              <div>Loading...</div>
+              <div>Error: Not found</div>
             </div>
           ) : (
-            data === undefined ? (
-              <div className="loadingContainer">
-                <div>Error: Not found</div>
-              </div>
-            ) : (
-              <>
-                <Search filterByQuery={filterByQuery} />
-                <section className="gamesContainer">
-                  {
-                    filteredGames ? 
-                    displayGames(filteredGames, openModal) :
-                    displayGames(data, openModal)
-                  }
-                </section>
-              </>
-            )
+            <>
+              <Search filterByQuery={filterByQuery} />
+              <section className="gamesContainer">
+                {
+                  filteredGames ? 
+                  displayGames(filteredGames, openModal) :
+                  displayGames(data, openModal)
+                }
+              </section>
+            </>
           )
-        }
-        {
-          modalGameData && 
-          <GameModal 
-            isOpen={modalIsOpen} 
-            onRequestClose={closeModal} 
-            modalGameData={modalGameData} 
-          />
-        }
+        )
+      }
+      {
+        modalGameData && 
+        <GameModal 
+          isOpen={modalIsOpen} 
+          onRequestClose={closeModal} 
+          modalGameData={modalGameData} 
+        />
+      }
 
-      </div>
-    )
-  }
+    </div>
+  )
 };
 
 const mapStateToProps = (state: AppState) => ({
