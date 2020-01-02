@@ -1,0 +1,107 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font: 62.5% sans-serif;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 1.0rem;
+}
+
+h2 {
+  font-size: 2.3rem;
+  margin: 1.0rem;
+}
+
+h3 {
+  font-size: 2.0rem;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  font-size: 1.5rem;
+}
+
+.container {
+  margin: 1em;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  width: 75%;
+}
+
+@media screen and (max-width: 568px) {
+  .searchContainer {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.searchContainer input {
+  margin-left: 20px;
+  height: 2em;
+  width: 20em;
+  font-size: 1.5rem;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.3rem;
+}
+
+.gamesContainer {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(315px, 1fr));
+}
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1rem;
+}
+
+.gameContainer:hover {
+  border: 1px solid rgb(30, 30, 30);
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+.gameContainer ul {
+  list-style: none;
+}
+
+.nameInfoContainer {
+  display: flex;
+  align-items: center;
+  margin: 1em;
+}
+
+/* Lighter shade of black for display no add-ons/voice support */
+.noSupport {
+  color: rgb(96, 111, 123)
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
