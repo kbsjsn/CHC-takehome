@@ -1,5 +1,5 @@
 {
-  "name": "ChangeHealthcare-takehome",
+  "name": "CHC-takehome",
   "version": "1.0.0",
   "main": "client/index.tsx",
   "scripts": {
