@@ -42,9 +42,17 @@ interface AppProps {
 }
 
 const App: React.FunctionComponent<AppProps> = (props) => { 
-  //   setInterval(this.props.loadGames, 3000);
 
-  useEffect(() => {props.loadGames()}, []);
+  useEffect(
+    () => {
+      props.loadGames();
+      const timerId = setInterval(props.loadGames, 5000);
+      return () => {
+        clearInterval(timerId);
+      }
+    }, 
+    []
+  );
   
   const { filterByQuery, openModal, closeModal } = props;
   const { data, filteredGames } = props.games;
@@ -87,7 +95,6 @@ const App: React.FunctionComponent<AppProps> = (props) => {
           modalGameData={modalGameData} 
         />
       }
-
     </div>
   )
 };

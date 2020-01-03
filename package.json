@@ -1,15 +1,13 @@
 {
-  "name": "changeHealthcare",
+  "name": "ChangeHealthcare-takehome",
   "version": "1.0.0",
-  "main": "webpack.config.js",
+  "main": "client/index.tsx",
   "scripts": {
     "start": "nodemon server/index.js",
     "build": "export NODE_ENV=production; webpack",
     "dev": "export NODE_ENV=development; webpack-dev-server & nodemon server/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kirk Shin",
   "dependencies": {
     "express": "^4.17.1",
     "react": "^16.12.0",
